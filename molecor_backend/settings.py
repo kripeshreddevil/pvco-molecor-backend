@@ -170,18 +170,3 @@ CLOUDINARY_STORAGE = {
     'API_SECRET': os.environ.get('CLOUDINARY_API_SECRET'),
 }
 
-import django
-
-# Only run after Django is ready
-django.setup()
-
-if os.environ.get("CREATE_SUPERUSER") == "True":
-    User = get_user_model()
-    # Change these credentials as you want
-    username = "admin"
-    email = "admin@example.com"
-    password = "admin123"
-    
-    if not User.objects.filter(username=username).exists():
-        User.objects.create_superuser(username=username, email=email, password=password)
-        print("Superuser created!")
